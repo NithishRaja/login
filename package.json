@@ -1,0 +1,11 @@
+{
+  "name": "react-redux-less",
+  "version": "1.0.0",
+  "description": "react quickstart with redux and less",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nithishraja@ymail.com",
+  "license": "MIT"
+}
