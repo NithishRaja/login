@@ -1,4 +1,4 @@
-import React frrom 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Hello extends React.Component {
@@ -8,4 +8,4 @@ class Hello extends React.Component {
   }
 }
 
-ReactDOM.render(<Hello />, Document.getElementById('root'));
+ReactDOM.render(<Hello />, document.getElementById('root'));
