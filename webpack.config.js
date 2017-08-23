@@ -12,7 +12,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        loaders: ['babel-loader'],
+        loaders: ['babel-loader', 'eslint-loader'],
         exclude: /node_modules/
       },
       {
@@ -24,5 +24,5 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'public')
-  }
+  },
 }
