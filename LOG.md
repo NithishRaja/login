@@ -11,3 +11,5 @@
 * finished writing epic for `loginAttempt` at 1006
 * `loginAttemptEpic` now contains only `debounceTime`, it doesn't make actual ajax request
 * started styling using bootstrap classes at 1013
+* finished basic styling at 1028
+* created `TODO.md` file and added todos in it at 1029
