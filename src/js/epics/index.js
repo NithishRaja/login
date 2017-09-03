@@ -1,9 +1,9 @@
 import { combineEpics, createEpicMiddleware } from "redux-observable";
-import "rxjs";
-import messageEpic from "./messageEpic";
+// import "rxjs";
+import loginAttemptEpic from "./loginAttemptEpic";
 
 const allEpics = combineEpics(
-  messageEpic
+  loginAttemptEpic
 );
 
 const epicMiddleware = createEpicMiddleware(
