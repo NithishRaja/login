@@ -4,7 +4,7 @@
   "description": "react quickstart with redux and less",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch --colors --json",
     "build": "webpack-dev-server --progress --colors --watch"
   },
   "author": "nithishraja@ymail.com",
