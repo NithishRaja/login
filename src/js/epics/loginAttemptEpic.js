@@ -11,6 +11,17 @@ export default function(action$){
                 .map(data => {
                   console.log(action);
                   console.log(JSON.stringify(data));
-                  return {type:"LOGIN_ATTEMPT_FAILED"};
+                  data.forEach((data) => {
+                    if(action.payload.email === data.email&&action.payload.password === data.password){
+                      console.log("true");
+                      action.payload = {email: action.payload.email, password: action.payload.password, validity: true};
+                    }
+                  });
+                  console.log(action);
+                  if(action.payload.validity){
+                    return {type:"LOGIN_ATTEMPT_SUCCESS"};
+                  }else{
+                    return {type:"LOGIN_ATTEMPT_FAILED"};
+                  }
             }));
 }

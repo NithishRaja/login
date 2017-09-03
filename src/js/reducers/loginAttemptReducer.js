@@ -7,6 +7,9 @@ export default function(state="none", action){
     case "LOGIN_ATTEMPT_FAILED":
       return "failed";
       break;
+    case "LOGIN_ATTEMPT_SUCCESS":
+      return "none";
+      break;
   }
   return state;
 }

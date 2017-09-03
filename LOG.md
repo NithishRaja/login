@@ -40,3 +40,4 @@
 * removed bug by listening for event both from `componentDidMount` and `componentDidUpdate`
 * for the first click, listener in componentDidMount is fired. For every other click, listener is componentDidUpdate is fired
 * added async functionality and actual ajax calls at 2056
+* using filter to remove data obtained from ajax call causes code to work only if email exists
