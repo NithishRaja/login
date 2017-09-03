@@ -1,4 +1,4 @@
 # TODO
 
-* implement actual ajax call
-* write tests
+* refactor functions
+* implement sign up

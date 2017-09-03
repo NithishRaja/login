@@ -2,13 +2,13 @@ import {shallow} from "enzyme";
 import React from "react";
 import ReactDOM from "react-dom";
 import "react-test-renderer";
-import Hello from "./../src/js/components/helloComponent";
+import Login from "./../src/js/components/loginComponent";
 
-describe("<Hello />", () => {
+describe("<Login />", () => {
 
-  it("should render a message and a button", () => {
+  it("should render a form and submit buttons", () => {
     const wrapper = shallow(
-      <Hello />
+      <Login />
     );
     expect(wrapper).toMatchSnapshot();
   });

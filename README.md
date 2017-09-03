@@ -9,4 +9,11 @@
 
 # testing
 * run `npm test`
-* write your own tests inside __tests__ folder
+* write your own tests inside \__tests__ folder
+
+# implementing with other apps
+* enter url where POST request is to be submitted in **loginAttemptEpic**
+* server must respond with response object which has validity set to **true** or **false**
+* enter url where GET request is to be submitted in **facebookLoginAttemptEpic**
+* server must rediect to implement facebook login on server side
+* if login failed server must respond response object which has validity set to **false**

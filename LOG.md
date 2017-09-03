@@ -43,3 +43,10 @@
 * using filter to remove data obtained from ajax call causes code to work only if email exists
 * dropped get request and wrote a post request at 2152
 * post request working as expected
+* adding comments for functions
+* finished adding comments at 2211
+* starting to implement facebook login 2228
+* started implementing `loginAttemptResetEpic` at 2232
+* finished implementation of `loginAttemptResetEpic` at 2235
+* finished facebook login at 2249
+* works as expected

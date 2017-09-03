@@ -10,6 +10,12 @@ export default function(state="none", action){
     case "LOGIN_ATTEMPT_SUCCESS":
       return "none";
       break;
+    case "LOGIN_ATTEMPT_RESET":
+      return "none";
+      break;
+    case "FACEBOOK_LOGIN_ATTEMPT_START":
+      return "underway";
+      break;
   }
   return state;
 }
