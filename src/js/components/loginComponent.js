@@ -40,14 +40,34 @@ export default class Login extends Component{
   componentDidMount(){
 
     Rx.Observable.fromEvent(document.querySelector("#signInButton"), "click")
+      .debounceTime(500)
       .subscribe(()=>{
         const email = document.querySelector("#inputEmail").value;
         const password = document.querySelector("#inputPassword").value;
-        this.props.attemptLogin({email, password});
+          this.props.attemptLogin({email, password});
       });
 
     Rx.Observable.fromEvent(document.querySelector("#facebookSignInButton"), "click")
+      .debounceTime(500)
       .subscribe(()=>alert("support for facebook sign in is under development"));
+
+  }
+
+  componentDidUpdate(){
+
+    if(this.props.loginAttempt != "underway"){
+      Rx.Observable.fromEvent(document.querySelector("#signInButton"), "click")
+        .debounceTime(500)
+        .subscribe(()=>{
+          const email = document.querySelector("#inputEmail").value;
+          const password = document.querySelector("#inputPassword").value;
+            this.props.attemptLogin({email, password});
+        });
+
+      Rx.Observable.fromEvent(document.querySelector("#facebookSignInButton"), "click")
+        .debounceTime(500)
+        .subscribe(()=>alert("support for facebook sign in is under development"));
+    }
 
   }
 
