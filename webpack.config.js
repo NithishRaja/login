@@ -7,7 +7,7 @@ module.exports = {
       port: 8080
   },
   devtool: 'eval-source-map',
-  entry: path.join(__dirname, 'src/js/app.js'),
+  entry: path.join(__dirname, 'src/js/index.js'),
   module: {
     loaders: [
       {
