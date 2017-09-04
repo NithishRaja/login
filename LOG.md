@@ -50,3 +50,27 @@
 * finished implementation of `loginAttemptResetEpic` at 2235
 * finished facebook login at 2249
 * works as expected
+* should add option for a signup page
+* **ended at 2256 on 03-09-2017**
+
+* **started at 0801 on 04-09-2017**
+* deciding how to implement sign up
+* method 1: could make a facebook style login page with sign in and signup in a single page
+* this doesn't involve react-router but involves handling 2 form submissions
+* method 2: could make a seperate page for signup
+* this involves react-router but seperates forms and functionality
+* decided to go with method 2 at 0809
+* starting to add react-router at 0810
+* run `npm install --save react-router-dom`
+* run `npm shrinkwrap`
+* error thrown **peer invalid**, must update npm to avoid this error
+* run `npm run build`
+* console error thrown `Uncaught Error: React.Children.only expected to receive a single React element child.`
+* console warning thrown `Warning: You tried to redirect to the same route you're currently on: "/login"`
+* removed route for **sign up** at 0824
+* router works as expected now
+* included **sign up**, but wrapped routes in a div at 0827
+* router still works as expected
+* created test component to check rendering of signup page at 0832
+* router render component correctly at 0833
+* **ended at 0853 on 04-09-2017**

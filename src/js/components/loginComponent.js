@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Rx from "rxjs/rx";
+import {Link} from "react-router-dom";
 
 export default class Login extends Component{
 
@@ -24,21 +25,24 @@ export default class Login extends Component{
                       </div>;
 
     //JSX to notify login failure
-    const _loginFailedAlert = <div className="alert alert-danger" role="alert"><strong>Recheck email and password</strong></div>;
+    const _loginFailedAlertJSX = <div className="alert alert-danger" role="alert"><strong>Recheck email and password</strong></div>;
 
     //JSX to notify login process is underway
-    const _loginVerifyingAlert = <div className="alert alert-info" role="alert"><strong>veryfing, please wait...</strong></div>;
+    const _loginVerifyingAlertJSX = <div className="alert alert-info" role="alert"><strong>veryfing, please wait...</strong></div>;
+
+    //JSX for sign up link
+    const _signUpJSX = <div>{"do not have an account? "}<Link to="/signup" >{"click here"}</Link>{" to sign up for free"}</div>;
 
     //deciding which alert to display
     if(this.props.loginAttempt === "underway"){
-      var _loginJSX = <article className="panel panel-default">{_loginFormJSX}{_loginVerifyingAlert}{_loginButtonJSX}</article>;
+      var _loginJSX = <article className="panel panel-default">{_loginFormJSX}{_loginVerifyingAlertJSX}{_loginButtonJSX}</article>;
     }else if(this.props.loginAttempt === "failed"){
-      _loginJSX = <article className="panel panel-default">{_loginFormJSX}{_loginFailedAlert}{_loginButtonJSX}</article>;
+      _loginJSX = <article className="panel panel-default">{_loginFormJSX}{_loginFailedAlertJSX}{_loginButtonJSX}</article>;
     }else{
       _loginJSX = <article className="panel panel-default">{_loginFormJSX}{_loginButtonJSX}</article>;
     }
 
-    return <section className="well">{_loginJSX}</section>;
+    return <section className="well">{_loginJSX}{_signUpJSX}</section>;
 
   }
 
