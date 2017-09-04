@@ -4,15 +4,16 @@ import {Provider} from "react-redux";
 import {HashRouter as Router, Route, Redirect, Switch} from "react-router-dom";
 import store from "./store";
 import Login from "./containers/loginContainer";
-import Test from "./components/testComponent";
+import Signup from "./containers/signupContainer";
+import NotFound from "./components/notFoundComponent";
 
 const _mainJSX = <Router>
                   <div>
-                    <Redirect from="/" to="/login" />
+
                       <Switch>
-                        <Route path="/login" component={Login} />
-                        <Route path="/signup" component={Test} />
-                        <Route render={()=><h1>not found</h1>} />
+                        <Route path="/" exact component={Login} />
+                        <Route path="/signup" component={Signup} />
+                        <Route component={NotFound} />
                       </Switch>
                   </div>
                 </Router>;

@@ -74,3 +74,29 @@
 * created test component to check rendering of signup page at 0832
 * router render component correctly at 0833
 * **ended at 0853 on 04-09-2017**
+
+* **started at 1047 on 04-09-2017**
+* removed redirect and changed path for login component from `/login` to `/` at 1047
+* warning `Warning: You tried to redirect to the same route you're currently on: "/login"` no longer appears
+* started writing component for not found page at 1050
+* finished basic not found page at 1055
+* added a go back to login page link to not found page at 1100
+* started writing component for sign up page at 1102
+* stopped writing component for sign up page at 1102
+* started refactoring login component instead
+* seperated all JSX from render and moved it into constructor at 1111
+* refactoring login component finished at 1116
+* started writing component for sign up page at 1119
+* finished connecting signup component with router via **signupContainer** at 1124
+* **ended at 1125 on 04-09-2017**
+
+* **started at 1140 on 04-09-2017**
+* started to write view for signup component at 1142
+* finished writing JSX for signup component at 1157
+* **ended at 1157 on 04-09-2017**
+
+* **started at 1218 on 04-09-2017**
+* added link to go back to login page in signup page at 1226
+* started styling signup component at 1227
+* finished styling signup component at 1236
+* **ended at 1239 on 04-09-2017**
