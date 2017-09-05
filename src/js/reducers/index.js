@@ -1,10 +1,10 @@
 import {combineReducers} from "redux";
-import isLoggedIn from "./isLoggedInReducer";
-import loginAttempt from "./loginAttemptReducer";
+import loginAttempt from "./loginAttempt";
+import signupAttempt from "./signupAttempt";
 
 const allReducers = combineReducers({
-  isLoggedIn,
-  loginAttempt
+  loginAttempt,
+  signupAttempt
 });
 
 export default allReducers;

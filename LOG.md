@@ -100,3 +100,19 @@
 * started styling signup component at 1227
 * finished styling signup component at 1236
 * **ended at 1239 on 04-09-2017**
+
+* **started at 0852 on 05-09-2017**
+* started writing props for signup component at 0900
+* found out that **isLoggedIn** prop for login page is redundant at 0903
+* found bug at 0911
+* **alertJSX** does not render on button click
+* **alertJSX** renders when if block is placed inside render
+* moved if block to **componentWillMount** at 0925
+* **alertJSX** doesn't render when if block is inside **componentWillMount**
+* placed if block inside **render** for now
+* both component working as expected at 0930
+* started writing epic for signup component at 0931
+* finished epic for signup component at 0940
+* epic working as expected
+* must add actual ajax functionality inside epic
+* **ended at 0940 on 05-09-2017**

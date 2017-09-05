@@ -6,8 +6,7 @@ import attemptFacebookLogin from "./../actions/attemptFacebookLogin";
 
 const mapStateToProps = (state) => {
   return {
-    isLoggedIn: state.isLoggedIn,
-    loginAttempt: state.loginAttempt,
+    loginAttempt: state.loginAttempt
   };
 };
 

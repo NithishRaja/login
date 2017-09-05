@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
+import Rx from "rxjs/rx";
 
 export default class Signup extends Component{
 
@@ -35,7 +36,7 @@ export default class Signup extends Component{
 
     this._signupPasswordsDonotMatchJSX = <div className="alert alert-danger" role="alert"><strong>{"account for this email already exists"}</strong></div>;
 
-    this._signupJSX = <article className="panel panel-default">{this._signupFormJSX}{this._signupPasswordsDonotMatchJSX}{this._signupAccountExistsAlertJSX}{this._signupVerifyingAlertJSX}{this._signupButtonJSX}</article>;
+    this._signupJSX = <article className="panel panel-default">{this._signupFormJSX}{this._signupButtonJSX}</article>;
 
     this._loginJSX = <div>{"already have an account? "}<Link to="/">click here</Link>{" to log in"}</div>;
 
@@ -43,7 +44,35 @@ export default class Signup extends Component{
 
   render(){
 
+    if(this.props.signupAttempt === "underway"){
+      this._signupJSX = <article className="panel panel-default">{this._signupFormJSX}{this._signupVerifyingAlertJSX}{this._signupButtonJSX}</article>;
+    }else if(this.props.signupAttempt === "account-exists"){
+      this._signupJSX = <article className="panel panel-default">{this._signupFormJSX}{this._signupAccountExistsAlertJSX}{this._signupButtonJSX}</article>;
+    }else if(this.props.signupAttempt === "passwords-donot-match"){
+      this._signupJSX = <article className="panel panel-default">{this._signupFormJSX}{this._signupPasswordsDonotMatchJSX}{this._signupButtonJSX}</article>;
+    }
+
     return <section className="well">{this._signupJSX}{this._loginJSX}</section>;
+
+  }
+
+  componentDidMount(){
+
+    console.log(this.props);
+
+    Rx.Observable.fromEvent(document.querySelector("#signupButton"), "click")
+      .debounceTime(500)
+      .subscribe(() => this.props.attemptSignup());
+
+  }
+
+  componentDidUpdate(){
+
+    console.log(this.props);
+
+    Rx.Observable.fromEvent(document.querySelector("#signupButton"), "click")
+      .debounceTime(500)
+      .subscribe(() => this.props.attemptSignup());
 
   }
 
