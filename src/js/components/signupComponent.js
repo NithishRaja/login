@@ -7,6 +7,7 @@ export default class Signup extends Component{
   constructor(props){
     super(props);
 
+    //JSX for sign up form
     this._signupFormJSX = <form className="panel-body">
                             <formset className="form-group">
                               <label htmlFor="signupName">name:</label>
@@ -26,22 +27,30 @@ export default class Signup extends Component{
                             </formset>
                           </form>;
 
+    //JSX for sign up button
     this._signupButtonJSX = <div className="panel-footer">
                               <button className="btn btn-success" id="signupButton">Sign Up</button>
                             </div>;
 
+    //JSX for empty-fields alert
     this._signupEmptyFieldAlertJSX = <div className="alert alert-warning" role="alert"><strong>{"fill all the fields before submiting"}</strong></div>;
 
+    //JSX for server-error alert
     this._signupServerErrorAlertJSX = <div className="alert alert-danger" role="alert"><strong>{"server error occured. please try again later"}</strong></div>;
 
+    //JSX for verifying alert
     this._signupVerifyingAlertJSX = <div className="alert alert-info" role="alert"><strong>veryfing, please wait...</strong></div>;
 
+    //JSX for account-exists alert
     this._signupAccountExistsAlertJSX = <div className="alert alert-info" role="alert"><strong>{"account for this email already exists"}</strong></div>;
 
+    //JSX for passwords-donot-match alert
     this._signupPasswordsDonotMatchJSX = <div className="alert alert-warning" role="alert"><strong>{"password field must match password-re field"}</strong></div>;
 
+    //JSX for login link
     this._loginJSX = <div>{"already have an account? "}<Link to="/">click here</Link>{" to log in"}</div>;
 
+    //subscriber for listening to signupButton click
     this._signupButtonClickSubscriber = {
       next: () => {
         const name = document.querySelector("#signupName").value;
@@ -62,6 +71,7 @@ export default class Signup extends Component{
 
   render(){
 
+    //deciding which alert to display
     switch(this.props.signupAttempt){
       case "underway":
         this._signupJSX = <article className="panel panel-default">{this._signupFormJSX}{this._signupVerifyingAlertJSX}{this._signupButtonJSX}</article>;
@@ -88,6 +98,7 @@ export default class Signup extends Component{
 
   componentDidMount(){
 
+    //listening for signupButton click
     Rx.Observable.fromEvent(document.querySelector("#signupButton"), "click")
       .debounceTime(500)
       .subscribe(this._signupButtonClickSubscriber);
@@ -96,6 +107,7 @@ export default class Signup extends Component{
 
   componentDidUpdate(){
 
+    //listening for signupButton click
     Rx.Observable.fromEvent(document.querySelector("#signupButton"), "click")
       .debounceTime(500)
       .subscribe(this._signupButtonClickSubscriber);

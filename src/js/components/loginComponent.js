@@ -25,21 +25,25 @@ export default class Login extends Component{
                             <button id="facebookLoginButton" className="btn btn-primary">{"Sign in with facebook"}</button>
                           </div>;
 
-    //JSX to notify login failure
+    //JSX for empty-fields alert
     this._loginEmptyFieldAlertJSX = <div className="alert alert-warning" role="alert"><strong>{"fill all fields before submiting"}</strong></div>;
 
+    //JSX for account-doesnot-exist alert
     this._loginAccountDoesnotExistAlertJSX = <div className="alert alert-warning" role="alert"><strong>{"account does not exist. sign up to create an account"}</strong></div>;
 
+    //JSX for wrong-password alert
     this._loginWrongPassowrdAlertJSX = <div className="alert alert-danger" role="alert"><strong>{"the password tou entered is wrong. check if CaspLk is off"}</strong></div>;
 
+    //JSX for server-error alert
     this._loginServerErrorAlertJSX = <div className="alert alert-danger" role="alert"><strong>{"server error occured. please try again later"}</strong></div>;
 
-    //JSX to notify login process is underway
+    //JSX for verifying alert
     this._loginVerifyingAlertJSX = <div className="alert alert-info" role="alert"><strong>veryfing, please wait...</strong></div>;
 
     //JSX for sign up link
     this._signUpJSX = <div>{"do not have an account? "}<Link to="/signup" >{"click here"}</Link>{" to sign up for free"}</div>;
 
+    //subscriber function for listening to loginButton click
     this._loginButtonClickSubscriber = {
       next: ()=>{
         const email = document.querySelector("#loginEmail").value;
@@ -52,6 +56,7 @@ export default class Login extends Component{
       }
     };
 
+    //subscriber for listening to facebookLoginButton click
     this._facebookLoginButtonClickSubscriber = {
       next: ()=>this.props.attemptFacebookLogin()
     };

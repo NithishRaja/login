@@ -16,7 +16,7 @@ export default function(action$){
               responseType: "json"})
                 .pluck("response")
                 .map(response => {
-                  //checking if verified
+                  //checking response
                   if(response.accountExists === false){
                     return {type: "LOGIN_ATTEMPT_FAILED", payload:{reason:"account-doesnot-exist"}};
                   }else if(response.validation.isValid === false){
