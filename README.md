@@ -12,8 +12,31 @@
 * write your own tests inside \__tests__ folder
 
 # implementing with other apps
+
+## login
 * enter url where POST request is to be submitted in **loginAttemptEpic**
-* server must respond with response object which has validity set to **true** or **false**
+* server must redirect if login is successful
+* server must respond with response object with the following if login fails
+  {
+    accountExists: [true, false],
+    validation: {
+      isValid: [true, false]
+    },
+    error: {
+      error object comes here
+    }
+  }
 * enter url where GET request is to be submitted in **facebookLoginAttemptEpic**
 * server must rediect to implement facebook login on server side
-* if login failed server must respond response object which has validity set to **false**
+
+
+## signup
+* enter url where POST request is to be submitted in **signupAttemptEpic**
+* server must redirect if signup is successful
+* server must respond with response object with the following
+{
+  accountExists: [true, false],
+  error: {
+    error object comes here
+  }
+}

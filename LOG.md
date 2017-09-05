@@ -135,5 +135,6 @@
 * started adding validations for login component at 0030
 * finished adding validations for login component at 0052
 * app working as expected
-* wrote test for **signup** Component at 0101
-* 
+* wrote test for **signup** component at 0101
+* added comments for **signup** component at 0110
+* updated **README.md** at 0120

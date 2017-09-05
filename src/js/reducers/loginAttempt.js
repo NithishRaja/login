@@ -5,6 +5,7 @@ export default function(state="none", action){
       return "underway";
       break;
     case "LOGIN_ATTEMPT_FAILED":
+    if(action.payload.error) console.log(action.payload.error);
       return action.payload.reason;
       break;
     case "LOGIN_ATTEMPT_RESET":
