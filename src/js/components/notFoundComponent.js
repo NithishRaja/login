@@ -6,15 +6,18 @@ export default class NotFound extends Component{
   constructor(props){
     super(props);
 
-    this._notFoundHeaderJSX = <h1>not found</h1>;
-
-    this._notFoundBodyJSX = <p>{"the page you were looking for does'nt exist. "}<Link to="/">click here</Link>{" to go back"}</p>;
-
   }
 
   render(){
 
-    return <section>{this._notFoundHeaderJSX}{this._notFoundBodyJSX}</section>;
+    return <header>
+            <div className="jumbotron">
+              <h1 className="display-3">{"404: Page not found"}</h1>
+              <p className="lead">{"The page you requested for does not exist."}</p>
+              <hr className="my-4" />
+              <p><Link to="/">Login</Link>{" to visit our pages or "}<Link to="/signup">Signup</Link>{" for free"}</p>
+            </div>
+          </header>;
 
   }
 

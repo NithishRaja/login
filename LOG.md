@@ -138,3 +138,4 @@
 * wrote test for **signup** component at 0101
 * added comments for **signup** component at 0110
 * updated **README.md** at 0120
+* updated not found component at 0132

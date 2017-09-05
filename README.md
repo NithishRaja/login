@@ -40,3 +40,7 @@
     error object comes here
   }
 }
+
+## not found
+* trying to visit page other than login and signup will render a not found page
+* not found page has links to both login and signup
