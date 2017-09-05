@@ -30,26 +30,56 @@ export default class Signup extends Component{
                               <button className="btn btn-success" id="signupButton">Sign Up</button>
                             </div>;
 
+    this._signupEmptyFieldAlertJSX = <div className="alert alert-warning" role="alert"><strong>{"fill all the fields before submiting"}</strong></div>;
+
+    this._signupServerErrorAlertJSX = <div className="alert alert-danger" role="alert"><strong>{"server error occured. please try again later"}</strong></div>;
+
     this._signupVerifyingAlertJSX = <div className="alert alert-info" role="alert"><strong>veryfing, please wait...</strong></div>;
 
     this._signupAccountExistsAlertJSX = <div className="alert alert-info" role="alert"><strong>{"account for this email already exists"}</strong></div>;
 
-    this._signupPasswordsDonotMatchJSX = <div className="alert alert-danger" role="alert"><strong>{"account for this email already exists"}</strong></div>;
-
-    this._signupJSX = <article className="panel panel-default">{this._signupFormJSX}{this._signupButtonJSX}</article>;
+    this._signupPasswordsDonotMatchJSX = <div className="alert alert-warning" role="alert"><strong>{"password field must match password-re field"}</strong></div>;
 
     this._loginJSX = <div>{"already have an account? "}<Link to="/">click here</Link>{" to log in"}</div>;
+
+    this._signupButtonClickSubscriber = {
+      next: () => {
+        const name = document.querySelector("#signupName").value;
+        const email = document.querySelector("#signupEmail").value;
+        const password = document.querySelector("#signupPassword").value;
+        const passwordRe = document.querySelector("#signupPasswordRe").value;
+        if(name==""||email==""||password==""||passwordRe==""){
+          this.props.attemptSignup({type:"SIGNUP_ATTEMPT_FAILED", payload:{reason:"empty-fields"}});
+        }else if(password !== passwordRe){
+          this.props.attemptSignup({type:"SIGNUP_ATTEMPT_FAILED", payload:{reason:"passwords-donot-match"}});
+        }else{
+          this.props.attemptSignup({type:"SIGNUP_ATTEMPT_START", payload:{name, email, password, passwordRe}});
+        }
+      }
+    };
 
   }
 
   render(){
 
-    if(this.props.signupAttempt === "underway"){
-      this._signupJSX = <article className="panel panel-default">{this._signupFormJSX}{this._signupVerifyingAlertJSX}{this._signupButtonJSX}</article>;
-    }else if(this.props.signupAttempt === "account-exists"){
-      this._signupJSX = <article className="panel panel-default">{this._signupFormJSX}{this._signupAccountExistsAlertJSX}{this._signupButtonJSX}</article>;
-    }else if(this.props.signupAttempt === "passwords-donot-match"){
-      this._signupJSX = <article className="panel panel-default">{this._signupFormJSX}{this._signupPasswordsDonotMatchJSX}{this._signupButtonJSX}</article>;
+    switch(this.props.signupAttempt){
+      case "underway":
+        this._signupJSX = <article className="panel panel-default">{this._signupFormJSX}{this._signupVerifyingAlertJSX}{this._signupButtonJSX}</article>;
+        break;
+      case "account-exists":
+        this._signupJSX = <article className="panel panel-default">{this._signupFormJSX}{this._signupAccountExistsAlertJSX}{this._signupButtonJSX}</article>;
+        break;
+      case "passwords-donot-match":
+        this._signupJSX = <article className="panel panel-default">{this._signupFormJSX}{this._signupPasswordsDonotMatchJSX}{this._signupButtonJSX}</article>;
+        break;
+      case "empty-fields":
+        this._signupJSX = <article className="panel panel-default">{this._signupFormJSX}{this._signupEmptyFieldAlertJSX}{this._signupButtonJSX}</article>;
+        break;
+      case "server-error":
+        this._signupJSX = <article className="panel panel-default">{this._signupFormJSX}{this._signupServerErrorAlertJSX}{this._signupButtonJSX}</article>;
+        break;
+      default:
+        this._signupJSX = <article className="panel panel-default">{this._signupFormJSX}{this._signupButtonJSX}</article>;
     }
 
     return <section className="well">{this._signupJSX}{this._loginJSX}</section>;
@@ -58,21 +88,17 @@ export default class Signup extends Component{
 
   componentDidMount(){
 
-    console.log(this.props);
-
     Rx.Observable.fromEvent(document.querySelector("#signupButton"), "click")
       .debounceTime(500)
-      .subscribe(() => this.props.attemptSignup());
+      .subscribe(this._signupButtonClickSubscriber);
 
   }
 
   componentDidUpdate(){
 
-    console.log(this.props);
-
     Rx.Observable.fromEvent(document.querySelector("#signupButton"), "click")
       .debounceTime(500)
-      .subscribe(() => this.props.attemptSignup());
+      .subscribe(this._signupButtonClickSubscriber);
 
   }
 

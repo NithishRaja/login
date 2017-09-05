@@ -116,3 +116,20 @@
 * epic working as expected
 * must add actual ajax functionality inside epic
 * **ended at 0940 on 05-09-2017**
+
+* **started at 1200 on 05-09-2017**
+* started writing code to check if passwords match
+* decided to write epics to check for blank fields and matching passwords before dispatching ajax calls at 1254
+* **ended at 1255 on 05-09-2017**
+
+* **started at 1545 on 05-09-2017**
+* started moving ckecking empty fields and password matches into epics at 1546
+* changed decision to check empty fields and password matches in component at 1610
+* **ended at 1612 on 05-09-2017**
+
+* **started at 0005 on 06-09-2017**
+* trying new approach for checking empty fields and password matches at 0006
+* added new alerts for server error and empty fields at 0017
+* added validations inside observable sunscriber at 0028
+* app woking as expected
+* 

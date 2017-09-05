@@ -1,6 +1,5 @@
 
 export default function(state="none", action){
-  console.log(action);
   switch(action.type){
     case "SIGNUP_ATTEMPT_START":
       return "underway";
@@ -9,6 +8,7 @@ export default function(state="none", action){
       return "none";
       break;
     case "SIGNUP_ATTEMPT_FAILED":
+      if(action.payload.error) console.error(action.payload.error);
       return action.payload.reason;
       break;
   }

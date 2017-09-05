@@ -34,8 +34,6 @@ export default class Login extends Component{
     //JSX for sign up link
     this._signUpJSX = <div>{"do not have an account? "}<Link to="/signup" >{"click here"}</Link>{" to sign up for free"}</div>;
 
-    this._loginJSX = <article className="panel panel-default">{this._loginFormJSX}{this._loginButtonJSX}</article>;
-
     this._loginButtonClickSubscriber = {
       next: ()=>{
         const email = document.querySelector("#loginEmail").value;
@@ -58,6 +56,8 @@ export default class Login extends Component{
       this._loginJSX = <article className="panel panel-default">{this._loginFormJSX}{this._loginVerifyingAlertJSX}{this._loginButtonJSX}</article>;
     }else if(this.props.loginAttempt === "failed"){
       this._loginJSX = <article className="panel panel-default">{this._loginFormJSX}{this._loginFailedAlertJSX}{this._loginButtonJSX}</article>;
+    }else{
+      this._loginJSX = <article className="panel panel-default">{this._loginFormJSX}{this._loginButtonJSX}</article>;
     }
 
     return <section className="well">{this._loginJSX}{this._signUpJSX}</section>;

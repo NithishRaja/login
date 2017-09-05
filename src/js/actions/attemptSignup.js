@@ -1,7 +1,8 @@
 
-export default function(payload){
+export default function(config){
+
   return {
-    type: "SIGNUP_ATTEMPT_START",
-    payload
+    type: config.type,
+    payload: config.payload
   };
 }
