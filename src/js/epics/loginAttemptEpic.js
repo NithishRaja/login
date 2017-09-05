@@ -15,12 +15,14 @@ export default function(action$){
               method: "POST",
               responseType: "json"})
                 .pluck("response")
-                .map(data => {
+                .map(response => {
                   //checking if verified
-                  if(data.validity === true){
-                    return {type: "LOGIN_ATTEMPT_SUCCESS"};
-                  }else{
-                    return {type: "LOGIN_ATTEMPT_FAILED"};
+                  if(response.accountExists === false){
+                    return {type: "LOGIN_ATTEMPT_FAILED", payload:{reason:"account-doesnot-exist"}};
+                  }else if(response.validation.isValid === false){
+                    return {type: "LOGIN_ATTEMPT_FAILED", payload:{reason:"wrong-password"}};
+                  }else if(response.error){
+                    return {type: "LOGIN_ATTEMPT_FAILED", payload:{reason:"server-error", error:response.error}};
                   }
             })
           );

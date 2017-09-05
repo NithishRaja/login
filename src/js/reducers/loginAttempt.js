@@ -5,10 +5,7 @@ export default function(state="none", action){
       return "underway";
       break;
     case "LOGIN_ATTEMPT_FAILED":
-      return "failed";
-      break;
-    case "LOGIN_ATTEMPT_SUCCESS":
-      return "none";
+      return action.payload.reason;
       break;
     case "LOGIN_ATTEMPT_RESET":
       return "none";

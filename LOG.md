@@ -130,6 +130,10 @@
 * **started at 0005 on 06-09-2017**
 * trying new approach for checking empty fields and password matches at 0006
 * added new alerts for server error and empty fields at 0017
-* added validations inside observable sunscriber at 0028
-* app woking as expected
+* added validations inside observable subscriber at 0028
+* app working as expected
+* started adding validations for login component at 0030
+* finished adding validations for login component at 0052
+* app working as expected
+* wrote test for **signup** Component at 0101
 * 

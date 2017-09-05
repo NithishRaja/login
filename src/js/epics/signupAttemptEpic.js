@@ -13,11 +13,11 @@ export default function(action$){
               method: "POST",
               responseType: "json"})
                 .pluck("response")
-                .map(data => {
-                  if(data.accountExists === true){
-                    return {type: "LOGIN_ATTEMPT_FAILED", payload: {reason:"account-exists"}};
-                  }else if(data.validation.isValid === false){
-                    return {type: "LOGIN_ATTEMPT_FAILED", payload: {reason:"server-error", error:data.error}};
+                .map(response => {
+                  if(response.accountExists === true){
+                    return {type: "SIGNUP_ATTEMPT_FAILED", payload: {reason:"account-exists"}};
+                  }else if(response.error){
+                    return {type: "SIGNUP_ATTEMPT_FAILED", payload: {reason:"server-error", error:response.error}};
                   }
                 })
           );

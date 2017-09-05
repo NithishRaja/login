@@ -26,7 +26,13 @@ export default class Login extends Component{
                           </div>;
 
     //JSX to notify login failure
-    this._loginFailedAlertJSX = <div className="alert alert-danger" role="alert"><strong>Recheck email and password</strong></div>;
+    this._loginEmptyFieldAlertJSX = <div className="alert alert-warning" role="alert"><strong>{"fill all fields before submiting"}</strong></div>;
+
+    this._loginAccountDoesnotExistAlertJSX = <div className="alert alert-warning" role="alert"><strong>{"account does not exist. sign up to create an account"}</strong></div>;
+
+    this._loginWrongPassowrdAlertJSX = <div className="alert alert-danger" role="alert"><strong>{"the password tou entered is wrong. check if CaspLk is off"}</strong></div>;
+
+    this._loginServerErrorAlertJSX = <div className="alert alert-danger" role="alert"><strong>{"server error occured. please try again later"}</strong></div>;
 
     //JSX to notify login process is underway
     this._loginVerifyingAlertJSX = <div className="alert alert-info" role="alert"><strong>veryfing, please wait...</strong></div>;
@@ -38,7 +44,11 @@ export default class Login extends Component{
       next: ()=>{
         const email = document.querySelector("#loginEmail").value;
         const password = document.querySelector("#loginPassword").value;
-        this.props.attemptLogin({email, password});
+        if(email==""||password==""){
+          this.props.attemptLogin({type:"LOGIN_ATTEMPT_FAILED",payload:{reason:"empty-fields"}});
+        }else{
+          this.props.attemptLogin({type:"LOGIN_ATTEMPT_START",payload:{email, password}});
+        }
       }
     };
 
@@ -51,13 +61,24 @@ export default class Login extends Component{
   render(){
 
     //deciding which alert to display
-    if(this.props.loginAttempt === "underway"){
-      console.log("underway");
-      this._loginJSX = <article className="panel panel-default">{this._loginFormJSX}{this._loginVerifyingAlertJSX}{this._loginButtonJSX}</article>;
-    }else if(this.props.loginAttempt === "failed"){
-      this._loginJSX = <article className="panel panel-default">{this._loginFormJSX}{this._loginFailedAlertJSX}{this._loginButtonJSX}</article>;
-    }else{
-      this._loginJSX = <article className="panel panel-default">{this._loginFormJSX}{this._loginButtonJSX}</article>;
+    switch(this.props.loginAttempt){
+      case "underway":
+        this._loginJSX = <article className="panel panel-default">{this._loginFormJSX}{this._loginVerifyingAlertJSX}{this._loginButtonJSX}</article>;
+        break;
+      case "account-doesnot-exist":
+        this._loginJSX = <article className="panel panel-default">{this._loginFormJSX}{this._loginAccountDoesnotExistAlertJSX}{this._loginButtonJSX}</article>;
+        break;
+      case "empty-fields":
+        this._loginJSX = <article className="panel panel-default">{this._loginFormJSX}{this._loginEmptyFieldAlertJSX}{this._loginButtonJSX}</article>;
+        break;
+      case "wrong-password":
+        this._loginJSX = <article className="panel panel-default">{this._loginFormJSX}{this._loginWrongPassowrdAlertJSX}{this._loginButtonJSX}</article>;
+        break;
+      case "server-error":
+        this._loginJSX = <article className="panel panel-default">{this._loginFormJSX}{this._loginServerErrorAlertJSX}{this._loginButtonJSX}</article>;
+        break;
+      default:
+        this._loginJSX = <article className="panel panel-default">{this._loginFormJSX}{this._loginButtonJSX}</article>;
     }
 
     return <section className="well">{this._loginJSX}{this._signUpJSX}</section>;

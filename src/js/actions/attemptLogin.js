@@ -1,7 +1,7 @@
 
-export default function(payload){
+export default function(config){
   return {
-    type: "LOGIN_ATTEMPT_START",
-    payload
+    type: config.type,
+    payload: config.payload
   };
 }
